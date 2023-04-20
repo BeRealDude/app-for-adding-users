@@ -1,0 +1,10 @@
+.list__user-info{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

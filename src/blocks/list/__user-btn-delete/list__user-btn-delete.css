@@ -1,0 +1,16 @@
+.list__user-btn-delete{
+    background-image: url('../../../images/icons-delete.svg');
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.list__user-btn-delete:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}

@@ -6,12 +6,17 @@
     color: white;
     background-repeat: no-repeat;
     background-position: left;
-    border-radius: 5%;
+    border-radius: 6px;
     border: none;
     background-position-x: 32px;
     padding-left: 3%;
     padding-top: 0.3%;
     cursor: pointer;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 .sub-header__btn-add:hover{

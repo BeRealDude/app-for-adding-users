@@ -9,6 +9,26 @@ function Main() {
             <h1 className="sub-header__users">Пользователи</h1>
             <button className="sub-header__btn-add">Добавить</button>
         </div>
+        <ul className="list">
+            <li className="list__user">
+                <p className="list__user-info">Фамилия</p>
+                <p className="list__user-info">Имя</p>
+                <p className="list__user-info">Отчество</p>
+                <p className="list__user-info">E-mail</p>
+                <p className="list__user-info">Логин</p>
+            </li>
+            <li className="list__user">
+                <p className="list__user-info">Иванов</p>
+                <p className="list__user-info">Иван</p>
+                <p className="list__user-info">Иванович</p>
+                <p className="list__user-info">mail1@mail.com</p>
+                <p className="list__user-info">user1</p>
+                <div className="list__btn-wrap">
+                <button className="list__user-btn-edit"></button>
+                <button className="list__user-btn-delete"></button>
+                </div>
+            </li>
+        </ul>
         </main>
         </div>
     )

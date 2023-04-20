@@ -1,0 +1,13 @@
+.list__user{
+    display: grid;
+    justify-content: space-around;
+    min-height: 40px;
+    color: #353D4B;
+    background-color: white;
+    border-radius: 6px;
+    align-items: center;
+    margin-bottom: 0.5%;
+    grid-template-columns: repeat(5, 2fr) 1fr;
+    align-items: center;
+    padding: 0 3.4%;
+}

@@ -1,6 +1,12 @@
 @import url(./vendor/normalize/normalize.css);
 @import url(./vendor/fonts/Inter_Web/inter.css);
 /* @import url();*/
+@import url(./blocks/list/__btn-wrap/list__btn-wrap.css);
+@import url(./blocks/list/__user-btn-delete/list__user-btn-delete.css);
+@import url(./blocks/list/__user-btn-edit/list__user-btn-edit.css);
+@import url(./blocks/list/__user-info/list__user-info.css);
+@import url(./blocks/list/__user/list__user.css);
+@import url(./blocks/list/list.css);
 @import url(./blocks/sub-header/__btn-add/sub-header__btn-add.css);
 @import url(./blocks/sub-header/__users/sub-header__users.css);
 @import url(./blocks/sub-header/sub-header.css);

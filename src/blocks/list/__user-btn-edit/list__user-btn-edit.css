@@ -1,0 +1,16 @@
+.list__user-btn-edit{
+    background-image: url('../../../images/icons-edit.svg');
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.list__user-btn-edit:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
