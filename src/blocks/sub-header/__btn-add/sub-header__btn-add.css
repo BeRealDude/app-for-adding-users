@@ -1,0 +1,20 @@
+.sub-header__btn-add{
+    background-image: url('../../../images/icons-add.svg');
+    width: 159px;
+    height: 36px;
+    background-color: #4587ED;
+    color: white;
+    background-repeat: no-repeat;
+    background-position: left;
+    border-radius: 5%;
+    border: none;
+    background-position-x: 32px;
+    padding-left: 3%;
+    padding-top: 0.3%;
+    cursor: pointer;
+}
+
+.sub-header__btn-add:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
