@@ -1,20 +1,22 @@
 {
   "files": {
-    "main.css": "/app-for-adding-users/static/css/main.bc7495b1.css",
-    "main.js": "/app-for-adding-users/static/js/main.820f3297.js",
+    "main.css": "/app-for-adding-users/static/css/main.10a565c9.css",
+    "main.js": "/app-for-adding-users/static/js/main.05ffbe26.js",
     "static/media/Inter-Medium.woff": "/app-for-adding-users/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/app-for-adding-users/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/app-for-adding-users/static/media/Inter-Regular.8c206db99195777c6769.woff",
     "static/media/Inter-Medium.woff2": "/app-for-adding-users/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
     "static/media/Inter-Black.woff2": "/app-for-adding-users/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
     "static/media/Inter-Regular.woff2": "/app-for-adding-users/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/icons-delete.svg": "/app-for-adding-users/static/media/icons-delete.b8a7c0e3b529a6911aa3.svg",
+    "static/media/icons-edit.svg": "/app-for-adding-users/static/media/icons-edit.215f03e9c4f0c8eb4667.svg",
     "static/media/icons-add.svg": "/app-for-adding-users/static/media/icons-add.f15f7860c6846b8c35ed.svg",
     "index.html": "/app-for-adding-users/index.html",
-    "main.bc7495b1.css.map": "/app-for-adding-users/static/css/main.bc7495b1.css.map",
-    "main.820f3297.js.map": "/app-for-adding-users/static/js/main.820f3297.js.map"
+    "main.10a565c9.css.map": "/app-for-adding-users/static/css/main.10a565c9.css.map",
+    "main.05ffbe26.js.map": "/app-for-adding-users/static/js/main.05ffbe26.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc7495b1.css",
-    "static/js/main.820f3297.js"
+    "static/css/main.10a565c9.css",
+    "static/js/main.05ffbe26.js"
   ]
 }
