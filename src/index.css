@@ -1,6 +1,17 @@
 @import url(./vendor/normalize/normalize.css);
 @import url(./vendor/fonts/Inter_Web/inter.css);
 /* @import url();*/
+@import url(./blocks/form/__footer/form__footer.css);
+@import url(./blocks/modal-window/__input-heading/modal-window__input-heading.css);
+@import url(./blocks/modal-window/__text/modal-window__text.css);
+
+@import url(./blocks/form/__submit-btn/form__submit-btn.css);
+@import url(./blocks/form/form.css);
+@import url(./blocks/modal-window/__heading/modal-window__heading.css);
+@import url(./blocks/modal-window/__close/modal-window__close.css);
+@import url(./blocks/modal-window/__container/modal-window__container.css);
+@import url(./blocks/modal-window/modal-window.css);
+@import url(./blocks/modal-window/_opened/modal-window_opened.css);
 @import url(./blocks/list/__btn-wrap/list__btn-wrap.css);
 @import url(./blocks/list/__user-btn-delete/list__user-btn-delete.css);
 @import url(./blocks/list/__user-btn-edit/list__user-btn-edit.css);

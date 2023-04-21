@@ -1,0 +1,17 @@
+.modal-window__text{
+    border: 1px solid #EBECEF;
+    outline: none;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 1.66% 0 1.66% 2.6%;
+    border-radius: 6px;
+    background-color: #F9FAFC;
+    margin-bottom: 6%;
+}
+
+.modal-window__text:last-of-type{
+    margin-bottom: 11.66%;
+}

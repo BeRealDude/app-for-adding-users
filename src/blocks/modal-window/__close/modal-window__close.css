@@ -1,0 +1,18 @@
+.modal-window__close{
+    background-image: url(../../../images/icons-close.svg);
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    right: 24px;
+    top: 18px;
+    background-repeat: no-repeat;
+}
+
+.modal-window__close:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}

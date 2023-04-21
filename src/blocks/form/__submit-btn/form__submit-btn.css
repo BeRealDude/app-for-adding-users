@@ -1,0 +1,22 @@
+.form__submit-btn{
+    width: 153px;
+    height: 36px;
+    background-color: #4587ED;
+    border-radius: 6px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    margin-right: 24px;
+}
+
+.form__submit-btn:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
