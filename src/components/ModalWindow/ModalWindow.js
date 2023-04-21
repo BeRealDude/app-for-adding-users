@@ -7,10 +7,11 @@ function ModalWindow({ data, ...props }) {
             <h2 className="modal-window__heading">{data.title}</h2>
             <form className="form" name={data.user} id="user" onSubmit={onSubmit}>
             {props.children}
-            </form>
             <div className="form__footer">
       <button type="submit" className="form__submit-btn">{data.submit}</button>
       </div>
+            {/* <button type="submit" className="form__submit-btn">{data.submit}</button> */}
+            </form>
             </div>
         </section>
     )

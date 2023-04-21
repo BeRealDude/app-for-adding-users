@@ -7,6 +7,8 @@ import ModalWindowCreateUser from "../ModalWindowCreateUser/ModalWindowCreateUse
 function App() {
 
   const [isModalWindowCreateUserOpen, setModalWindowCreateUserOpen] = useState(false);
+  const [users, setUsers] = useState([]);
+
 
   function handleMWCreateUserClick() {
     console.log('открыть')
@@ -17,15 +19,22 @@ function App() {
     setModalWindowCreateUserOpen(false);
   }
 
+  const addUser = (newUser) => {
+    setUsers(user => [...user, newUser]);
+    closeAllModalWindows();
+  }
+
   return (
     <>
     <Header />
     <Main 
     onHandleMWCreateUser={handleMWCreateUserClick}
+    users={users}
     />
     <ModalWindowCreateUser 
     isOpen={isModalWindowCreateUserOpen}
     onClose={closeAllModalWindows}
+    onCreateUser={addUser}
     />
     </>
   );

@@ -1,6 +1,8 @@
-
+import React from "react";
+import User from "../User/User"; 
 
 function Main(props) {
+    
     return(
     <div className="content-wrap">
         <div className="content-wrap__side-bar"></div>
@@ -32,6 +34,12 @@ function Main(props) {
                 <button className="list__user-btn-delete"></button>
                 </div>
             </li>
+            {props.users.map((info, id) => 
+            <User
+              key={id}
+              info={info}
+            />
+            )}
         </ul>
         </main>
         </div>

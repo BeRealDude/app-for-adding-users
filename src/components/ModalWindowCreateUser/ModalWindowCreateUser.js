@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalWindow from '../ModalWindow/ModalWindow'
 
 function ModalWindowCreateUser(props) {
@@ -8,6 +8,16 @@ function ModalWindowCreateUser(props) {
     const [patronymic, setPatronymic] = useState("");
     const [email, setEmail] = useState("");
     const [login, setLogin] = useState("");
+
+    useEffect(() => {
+        if (isOpen) {
+          setSurname("");
+          setName("");
+          setPatronymic("");
+          setEmail("");
+          setLogin("");
+        }
+      }, [isOpen]);
     
     function handleChangeSurname(e) {
         setSurname(e.target.value);
@@ -33,9 +43,12 @@ function ModalWindowCreateUser(props) {
     function handleSubmit(e) {
         console.log("submit", props);
         e.preventDefault();
-        props.onUpdateUser({
+        props.onCreateUser({
             surname: surname,
             name: name,
+            patronymic: patronymic,
+            email: email,
+            login: login,
         });
       }
 
@@ -60,8 +73,8 @@ function ModalWindowCreateUser(props) {
         maxLength="40"
         className="modal-window__text"
         type="text"
-        name="userSurname"
-        id="user-surname"
+        name="surname"
+        id="surname"
         placeholder="Введите фамилию"
       />
       <h3 className="modal-window__input-heading">Имя</h3>
@@ -73,8 +86,8 @@ function ModalWindowCreateUser(props) {
         maxLength="40"
         className="modal-window__text"
         type="text"
-        name="userName"
-        id="user-name"
+        name="name"
+        id="name"
         placeholder="Введите имя"
       />
       <h3 className="modal-window__input-heading">Отчество</h3>
@@ -86,8 +99,8 @@ function ModalWindowCreateUser(props) {
         maxLength="40"
         className="modal-window__text"
         type="text"
-        name="userPatronymic"
-        id="user-patronymic"
+        name="patronymic"
+        id="patronymic"
         placeholder="Введите отчество"
       />
       <h3 className="modal-window__input-heading">E-mail</h3>
@@ -99,8 +112,8 @@ function ModalWindowCreateUser(props) {
         maxLength="40"
         className="modal-window__text"
         type="email"
-        name="userEmail"
-        id="user-email"
+        name="email"
+        id="email"
         placeholder="Введите электронную почту"
       />
       <h3 className="modal-window__input-heading">Логин</h3>
@@ -112,8 +125,8 @@ function ModalWindowCreateUser(props) {
         maxLength="40"
         className="modal-window__text"
         type="text"
-        name="userLogin"
-        id="user-login"
+        name="login"
+        id="login"
         placeholder="Введите логин"
       />
         </ModalWindow>
