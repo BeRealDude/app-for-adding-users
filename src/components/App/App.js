@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import ModalWindowCreateUser from "../ModalWindowCreateUser/ModalWindowCreateUser"
+import ModalWindowCreateUser from "../ModalWindowCreateUser/ModalWindowCreateUser";
+import usersData from '../Utils/usersData'
 
 
 function App() {
 
   const [isModalWindowCreateUserOpen, setModalWindowCreateUserOpen] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(usersData);
 
 
   function handleMWCreateUserClick() {
@@ -19,10 +20,13 @@ function App() {
     setModalWindowCreateUserOpen(false);
   }
 
-  const addUser = (newUser) => {
-    setUsers(user => [...user, newUser]);
+  
+
+  const addUser = (newUsers) => {
+    setUsers(user => [newUsers, ...user]);
     closeAllModalWindows();
   }
+  
 
   return (
     <>
@@ -35,6 +39,7 @@ function App() {
     isOpen={isModalWindowCreateUserOpen}
     onClose={closeAllModalWindows}
     onCreateUser={addUser}
+    users={users}
     />
     </>
   );

@@ -3,6 +3,7 @@ import User from "../User/User";
 
 function Main(props) {
     
+    
     return(
     <div className="content-wrap">
         <div className="content-wrap__side-bar"></div>
@@ -23,7 +24,7 @@ function Main(props) {
                 <p className="list__user-info">E-mail</p>
                 <p className="list__user-info">Логин</p>
             </li>
-            <li className="list__user">
+            {/* <li className="list__user">
                 <p className="list__user-info">Иванов</p>
                 <p className="list__user-info">Иван</p>
                 <p className="list__user-info">Иванович</p>
@@ -33,10 +34,10 @@ function Main(props) {
                 <button className="list__user-btn-edit"></button>
                 <button className="list__user-btn-delete"></button>
                 </div>
-            </li>
-            {props.users.map((info, id) => 
+            </li> */}
+            {props.users.map((info) => 
             <User
-              key={id}
+              key={info.id}
               info={info}
             />
             )}

@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import ModalWindow from '../ModalWindow/ModalWindow'
 
 function ModalWindowCreateUser(props) {
-    const { isOpen, onClose } = props;
+    const { isOpen, onClose, users} = props;
     const [surname, setSurname] = useState("");
     const [name, setName] = useState("");
     const [patronymic, setPatronymic] = useState("");
     const [email, setEmail] = useState("");
     const [login, setLogin] = useState("");
-
+    
     useEffect(() => {
         if (isOpen) {
           setSurname("");
@@ -38,18 +38,18 @@ function ModalWindowCreateUser(props) {
       function handleChangeLogin(e) {
         setLogin(e.target.value);
       }
-
-
+      
     function handleSubmit(e) {
         console.log("submit", props);
         e.preventDefault();
         props.onCreateUser({
-            surname: surname,
-            name: name,
-            patronymic: patronymic,
-            email: email,
-            login: login,
-        });
+            surname,
+            name,
+            patronymic,
+            email,
+            login,
+            id: users.length
+        },);
       }
 
     return(

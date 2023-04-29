@@ -3,7 +3,7 @@ function User(props) {
     const { info } = props;
 
     return(
-        <li className="list__user" >
+        <li className="list__user" key={info.id}>
                 <p className="list__user-info">{info.surname}</p>
                 <p className="list__user-info">{info.name}</p>
                 <p className="list__user-info">{info.patronymic}</p>
