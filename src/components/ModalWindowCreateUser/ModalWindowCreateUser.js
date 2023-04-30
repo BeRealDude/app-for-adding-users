@@ -1,27 +1,60 @@
 import { useState, useEffect } from "react";
 import ModalWindow from '../ModalWindow/ModalWindow'
 
+
 function ModalWindowCreateUser(props) {
     const { isOpen, onClose, users} = props;
     const [surname, setSurname] = useState("");
+    const [surnameTouched, setSurnameTouched] = useState(false);
+    const [surnameError, setSurnameError] = useState("Нужно ввести фамилию");
+
+    const [formValid, setFormValid] = useState(false);
+
     const [name, setName] = useState("");
     const [patronymic, setPatronymic] = useState("");
     const [email, setEmail] = useState("");
     const [login, setLogin] = useState("");
     
     useEffect(() => {
-        if (isOpen) {
-          setSurname("");
-          setName("");
-          setPatronymic("");
-          setEmail("");
-          setLogin("");
-        }
-      }, [isOpen]);
+      if (isOpen) {
+        setSurname("");
+        setName("");
+        setPatronymic("");
+        setEmail("");
+        setLogin("");
+        setFormValid(false);
+      }
+    }, [isOpen]);
+
+    useEffect(() => {
+      if(surnameError) {
+        setFormValid(false)
+      } else {
+        setFormValid(true)
+      }
+    }, [surnameError]);
     
     function handleChangeSurname(e) {
         setSurname(e.target.value);
+        if(e.target.value.length < 2 || e.target.value.length > 30) {
+          setSurnameError('Фамилия должна быть не меньше 2 символов и не больше 30')
+          if(!e.target.value) {
+            setSurnameError('Нужно ввести фамилию')
+          }
+        } else {
+          setSurnameError('')
+        }
       }
+
+      function blurHandler(e) {
+        switch (e.target.name) {
+          case 'surname':
+            setSurnameTouched(true);
+            console.log('касание')
+          break;
+          // no default
+        }
+       }
       
       function handleChangeName(e) {
         setName(e.target.value);
@@ -40,7 +73,6 @@ function ModalWindowCreateUser(props) {
       }
       
     function handleSubmit(e) {
-        console.log("submit", props);
         e.preventDefault();
         props.onCreateUser({
             surname,
@@ -63,9 +95,11 @@ function ModalWindowCreateUser(props) {
           isOpen={isOpen}
           onClose={onClose}
           onSubmit={handleSubmit}
+          formValid={formValid}
           >
             <h3 className="modal-window__input-heading">Фамилия</h3>
             <input
+            onBlur={blurHandler}
         value={surname || ""}
         onChange={handleChangeSurname}
         required
@@ -77,6 +111,7 @@ function ModalWindowCreateUser(props) {
         id="surname"
         placeholder="Введите фамилию"
       />
+      {(surnameTouched && surnameError) && <span className="modal-window__error">{surnameError}</span>}
       <h3 className="modal-window__input-heading">Имя</h3>
       <input
         value={name || ""}

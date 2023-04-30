@@ -4,8 +4,13 @@
 @import url(./blocks/form/__footer/form__footer.css);
 @import url(./blocks/modal-window/__input-heading/modal-window__input-heading.css);
 @import url(./blocks/modal-window/__text/modal-window__text.css);
+@import url(./blocks/modal-window/__error/modal-window__error.css);
+
 
 @import url(./blocks/form/__submit-btn/form__submit-btn.css);
+
+@import url(./blocks/form/__submit-btn/_disabled/form__submit-btn_disabled.css);
+
 @import url(./blocks/form/form.css);
 @import url(./blocks/modal-window/__heading/modal-window__heading.css);
 @import url(./blocks/modal-window/__close/modal-window__close.css);

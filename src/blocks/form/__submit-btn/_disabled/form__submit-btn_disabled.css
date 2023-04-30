@@ -1,0 +1,9 @@
+.form__submit-btn_disabled{
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.form__submit-btn_disabled:hover{
+    transition: 0;
+    opacity: 0.5;
+}
