@@ -1,0 +1,11 @@
+.modal-window__error_patronymic{
+    color: red;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    position: absolute;
+    top: 239px;
+    left: 70px;
+}
