@@ -1,0 +1,10 @@
+.modal-confirm__container {
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    min-width: 608px;
+    min-height: 284px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

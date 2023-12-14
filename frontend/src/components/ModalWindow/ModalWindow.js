@@ -12,12 +12,13 @@ function ModalWindow({ data, ...props }) {
             <h2 className="modal-window__heading">{data.title}</h2>
             <form className="form" name={data.user} id="user" onSubmit={onSubmit} noValidate>
             {props.children}
-            </form>
-            <div className="form__footer">
-      <button type="submit" name="create" form="user" className={`form__submit-btn form__submit-btn_type_${data.classSelector} ${isValid && 'form__submit-btn_disabled'}`} disabled={isValid}>
+            
+            {/* <div className="form__footer"> */}
+      <button type="submit" className={`form__submit-btn form__submit-btn_type_${data.classSelector} ${isValid && 'form__submit-btn_disabled'}`} disabled={isValid}>
         {data.submit}
         </button>
-      </div>
+        </form>
+      {/* </div> */}
             </div>
         </section>
     )

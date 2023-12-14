@@ -3,7 +3,7 @@ import ModalWindow from "../ModalWindow/ModalWindow";
 import { useFormWithValidation } from "../../hooks/useForm";
 // import { usersData } from '../Utils/usersData';
 
-function ModalWindowUpdateUser({ isOpen, onClose, users, onCreateUser, textErr, selectedUser }) {
+function ModalWindowUpdateUser({ isOpen, onClose, textErr, selectedUser, updateUser }) {
 
   const { handleChange, resetForm, isValid, values, errors, setValues } = useFormWithValidation();
 
@@ -30,17 +30,18 @@ const err =
 
   
 
-  console.log(selectedUser, 'выбранный юзер')
+  // console.log(selectedUser, 'выбранный юзер')
   
 
   function handleSubmit(e) {
     e.preventDefault();
-    onCreateUser({
+    updateUser({
       surname: values.surname,
       name: values.name,
       patronymic: values.patronymic,
       email: values.email,
       login: values.login,
+      _id: selectedUser._id
     });
   }
 
@@ -59,7 +60,6 @@ const err =
     >
       <h3 className="modal-window__input-heading">Фамилия</h3>
       <input
-        // onBlur={blurHandler}
         value={values?.surname || ''}
         onChange={handleChange}
         autoComplete="on"
@@ -77,7 +77,6 @@ const err =
       <input
         value={values?.name || ""}
         onChange={handleChange}
-        // onBlur={name.onBlur}
         required
         minLength="2"
         maxLength="40"
@@ -92,7 +91,6 @@ const err =
       <input
         value={values?.patronymic || ""}
         onChange={handleChange}
-        // onBlur={patronymic.onBlur}
         required
         minLength="2"
         maxLength="40"
@@ -107,7 +105,6 @@ const err =
       <input
         value={values?.email || ""}
         onChange={handleChange}
-        
         required
         minLength="2"
         maxLength="40"

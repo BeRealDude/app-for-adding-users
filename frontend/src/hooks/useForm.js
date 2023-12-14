@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
     const [values, setValues] = useState({});
     const [errors, setErrors] = useState({});
     const [isValid, setIsValid] = useState(false);
-  
+    
     const handleChange = ({ target }) => {
       const { name, value } = target;
       setValues({...values, [name]: value});
@@ -24,5 +24,5 @@ import { useCallback, useState } from "react";
     );
   
     return { values, setValues, handleChange, errors, isValid, resetForm };
-    
+   
   }

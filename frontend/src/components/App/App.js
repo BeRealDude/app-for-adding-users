@@ -1,14 +1,18 @@
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useEffect, useId, useCallback } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWindowCreateUser from "../ModalWindowCreateUser/ModalWindowCreateUser";
-// import usersData from '../Utils/usersData'
 import * as api from "../../utils/api";
 import ModalWindowUpdateUser from "../ModalWindowUpdateUser/ModalWindowUpdateUser";
+import ModalWindowConfirm from "../ModalWindowConfirm/ModalWindowConfirm";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState({});
+
   const [isModalWindowCreateUserOpen, setModalWindowCreateUserOpen] = useState(false);
   const [isMWUpdateUser, setMWUpdateUser] = useState(false);
+  const [isMWConfirm, setMWConfirm] = useState(false);
 
   const serverErrors = {
     err409: "Пользователь с этой почтой уже существует!",
@@ -23,9 +27,7 @@ function App() {
     }, 4000);
   }, [textErr]);
 
-  const [users, setUsers] = useState([]);
-
-  const [selectedUser, setSelectedUser] = useState({});
+  
 
   function handleMWCreateUserClick() {
     setModalWindowCreateUserOpen(true);
@@ -37,9 +39,15 @@ function App() {
     setSelectedUser(info)
   }
 
+  function handleMWConfirmOpen(info) {
+    setMWConfirm(true);
+    setSelectedUser(info)
+  }
+
   function closeAllModalWindows() {
     setModalWindowCreateUserOpen(false);
     setMWUpdateUser(false);
+    setMWConfirm(false);
   }
 
   function addNewUser(info) {
@@ -47,8 +55,6 @@ function App() {
       .addUser(info)
       .then((info) => {
         setUsers([info, ...users]);
-
-        // localStorage.setItem("newUsers", JSON.stringify(info));
         closeAllModalWindows();
       })
       .catch((err) => {
@@ -65,17 +71,41 @@ function App() {
       });
   }
 
-  function updateUser() {}
+
+  
+
+  function updateCurrentUser(info) {
+    api
+    .updateUser(info)
+    .then(() => {
+      
+       setSelectedUser(info)
+      closeAllModalWindows();
+      
+    })
+    .catch((err) => {
+      console.log(err, 'Ошибка при редактировании')
+    })
+
+  }
+
+
+  function deleteUser(info) {
+    console.log(info)
+    api
+    .deleteUser(info)
+    .then(() => {
+      setUsers((state) => state.filter((info) => info._id !== selectedUser._id))
+      closeAllModalWindows();
+    })
+    .catch((err) => {
+      console.log(err, 'Ошибка при удалении!')
+    })
+  }
+
+
 
   useEffect(() => {
-    //   const newUsers = JSON.parse(localStorage.getItem("newUsers"));
-    //  if(newUsers !== null) {
-
-    //     setUsers(newUsers);
-    //     console.log(newUsers)
-    //  }
-
-    //   // localStorage.clear();
 
     Promise.all([api.getUsers()])
       .then(([info]) => {
@@ -84,7 +114,7 @@ function App() {
       .catch((err) => {
         console.log(err, "Ошибка получения пользователей");
       });
-  }, []);
+  }, [selectedUser]);
 
   return (
     <>
@@ -93,6 +123,8 @@ function App() {
         onHandleMWCreateUser={handleMWCreateUserClick}
         users={users}
         onHandleMWUpdateUserOpen={handleMWUpdateUserOpen}
+        selectedUser={selectedUser}
+        onHandleMWConfirm={handleMWConfirmOpen}
       />
       <ModalWindowCreateUser
         isOpen={isModalWindowCreateUserOpen}
@@ -105,6 +137,13 @@ function App() {
       isOpen={isMWUpdateUser}
       onClose={closeAllModalWindows}
       users={users}
+      selectedUser={selectedUser}
+      updateUser={updateCurrentUser}
+      />
+      <ModalWindowConfirm 
+      isOpen={isMWConfirm}
+      onClose={closeAllModalWindows}
+      onDelete={deleteUser}
       selectedUser={selectedUser}
       />
     </>

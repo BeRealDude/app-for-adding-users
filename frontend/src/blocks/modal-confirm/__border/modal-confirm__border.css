@@ -1,0 +1,8 @@
+.modal-confirm__border {
+    display: flex;
+    min-height: 60px;
+    background-color: #F6F7F9;
+    border-radius: 0px 0px 10px 10px;
+    justify-content: flex-end;
+    align-items: center; 
+}

@@ -1,6 +1,6 @@
 
 function User(props) {
-    const { info, onHandleMWUpdateUserOpen } = props;
+    const { info, onHandleMWUpdateUserOpen, onHandleMWConfirm} = props;
 
     return(
         <li className="list__user" key={info._id}>
@@ -11,7 +11,7 @@ function User(props) {
                 <p className="list__user-info">{info.login}</p>
                 <div className="list__btn-wrap">
                 <button type="button" onClick={onHandleMWUpdateUserOpen} className="list__user-btn-edit"></button>
-                <button className="list__user-btn-delete"></button>
+                <button type="button" onClick={onHandleMWConfirm} className="list__user-btn-delete"></button>
                 </div>
             </li>
     );

@@ -1,8 +1,9 @@
 import React from "react";
 import User from "../User/User"; 
 
-function Main({ onHandleMWCreateUser, onHandleMWUpdateUserOpen, users }) {
-    console.log(users)
+function Main({ onHandleMWCreateUser, onHandleMWUpdateUserOpen, users, onHandleMWConfirm, selectedUser }) {
+
+
 
 const u = []
     
@@ -31,8 +32,17 @@ const u = []
               key={info._id}
               info={info}
               onHandleMWUpdateUserOpen={() => onHandleMWUpdateUserOpen(info)}
+              onHandleMWConfirm={() => onHandleMWConfirm(info)}
             /> 
-            ) : u}
+            ) 
+            : 
+            users.forEach((info) => 
+            <User
+              key={info._id}
+              info={info}
+              onHandleMWUpdateUserOpen={() => onHandleMWUpdateUserOpen(info)}
+            /> 
+            )}
         </ul>
         </main>
         </div>
