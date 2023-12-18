@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useId, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWindowCreateUser from "../ModalWindowCreateUser/ModalWindowCreateUser";
 import * as api from "../../utils/api";
 import ModalWindowUpdateUser from "../ModalWindowUpdateUser/ModalWindowUpdateUser";
 import ModalWindowConfirm from "../ModalWindowConfirm/ModalWindowConfirm";
+import { handleServerError } from "../../utils/validation";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -14,34 +15,30 @@ function App() {
   const [isMWUpdateUser, setMWUpdateUser] = useState(false);
   const [isMWConfirm, setMWConfirm] = useState(false);
 
-  const serverErrors = {
-    err409: "Пользователь с этой почтой уже существует!",
-    err400: "Переданы некорректные данные при добавления пользователя",
-  };
-
   const [textErr, setTextErr] = useState("");
+  const [textErrConfirm, setTextErrConfirm] = useState("");
+  const [textErrUpdate, setTextErrUpdate] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
       setTextErr("");
+      setTextErrConfirm("");
+      setTextErrUpdate("");
     }, 4000);
-  }, [textErr]);
-
-  
+  }, [textErr, textErrConfirm, textErrUpdate]);
 
   function handleMWCreateUserClick() {
     setModalWindowCreateUserOpen(true);
   }
- 
 
   function handleMWUpdateUserOpen(info) {
     setMWUpdateUser(true);
-    setSelectedUser(info)
+    setSelectedUser(info);
   }
 
   function handleMWConfirmOpen(info) {
     setMWConfirm(true);
-    setSelectedUser(info)
+    setSelectedUser(info);
   }
 
   function closeAllModalWindows() {
@@ -58,55 +55,38 @@ function App() {
         closeAllModalWindows();
       })
       .catch((err) => {
-        if (err === "Ошибка: 409") {
-          console.log(err, serverErrors.err409);
-          setTextErr(serverErrors.err409);
-        }
-        if (err === "Ошибка: 400") {
-          console.log(err, serverErrors.err400);
-          setTextErr(serverErrors.err400);
-        } else {
-          console.log(err, "Ошибка на сервере");
-        }
+        handleServerError(err, setTextErr);
       });
   }
 
-
-  
-
   function updateCurrentUser(info) {
     api
-    .updateUser(info)
-    .then(() => {
-      
-       setSelectedUser(info)
-      closeAllModalWindows();
-      
-    })
-    .catch((err) => {
-      console.log(err, 'Ошибка при редактировании')
-    })
-
+      .updateUser(info)
+      .then(() => {
+        setSelectedUser(info);
+        closeAllModalWindows();
+      })
+      .catch((err) => {
+        handleServerError(err, setTextErrUpdate);
+      });
   }
-
 
   function deleteUser(info) {
-    console.log(info)
+    console.log(info);
     api
-    .deleteUser(info)
-    .then(() => {
-      setUsers((state) => state.filter((info) => info._id !== selectedUser._id))
-      closeAllModalWindows();
-    })
-    .catch((err) => {
-      console.log(err, 'Ошибка при удалении!')
-    })
+      .deleteUser(info)
+      .then(() => {
+        setUsers((state) =>
+          state.filter((info) => info._id !== selectedUser._id)
+        );
+        closeAllModalWindows();
+      })
+      .catch((err) => {
+        handleServerError(err, setTextErrConfirm);
+      });
   }
 
-
-
   useEffect(() => {
-
     Promise.all([api.getUsers()])
       .then(([info]) => {
         setUsers(info.reverse());
@@ -133,18 +113,20 @@ function App() {
         users={users}
         textErr={textErr}
       />
-      <ModalWindowUpdateUser 
-      isOpen={isMWUpdateUser}
-      onClose={closeAllModalWindows}
-      users={users}
-      selectedUser={selectedUser}
-      updateUser={updateCurrentUser}
+      <ModalWindowUpdateUser
+        isOpen={isMWUpdateUser}
+        onClose={closeAllModalWindows}
+        users={users}
+        selectedUser={selectedUser}
+        updateUser={updateCurrentUser}
+        textErrUpdate={textErrUpdate}
       />
-      <ModalWindowConfirm 
-      isOpen={isMWConfirm}
-      onClose={closeAllModalWindows}
-      onDelete={deleteUser}
-      selectedUser={selectedUser}
+      <ModalWindowConfirm
+        isOpen={isMWConfirm}
+        onClose={closeAllModalWindows}
+        onDelete={deleteUser}
+        selectedUser={selectedUser}
+        textErrConfirm={textErrConfirm}
       />
     </>
   );

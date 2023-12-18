@@ -1,11 +1,9 @@
 @import url(./vendor/normalize/normalize.css);
 @import url(./vendor/fonts/Inter_Web/inter.css);
-/* @import url();*/
+
 @import url(./blocks/form/__footer/form__footer.css);
 
-/* @import url(./blocks/modal-window/__confirm/modal-window__confirm.css); */
-/* @import url(./blocks/modal-window/__container/_delete-user/modal-window_type_delete-user.css); */
-
+@import url(./blocks/modal-confirm/__error/modal-confirm__error.css);
 @import url(./blocks/modal-confirm/__border/modal-confirm__border.css);
 @import url(./blocks/modal-confirm/__btn/_cancel/modal-confirm__btn_cancel.css);
 @import url(./blocks/modal-confirm/__btn/_delete/modal-confirm__btn_delete.css);
@@ -23,7 +21,6 @@
 @import url(./blocks/modal-window/__error/_patronymic/modal-window__error_patronymic.css);
 @import url(./blocks/modal-window/__error/modal-window__error.css);
 @import url(./blocks/modal-window/__error/_name/modal-window__error_name.css);
-
 
 @import url(./blocks/form/__submit-btn/form__submit-btn.css);
 

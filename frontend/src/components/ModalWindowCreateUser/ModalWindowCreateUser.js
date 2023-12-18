@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { useFormWithValidation } from "../../hooks/useForm";
-// import { usersData } from '../Utils/usersData';
 
-function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }) {
+function ModalWindowCreateUser({
+  isOpen,
+  onClose,
+  users,
+  onCreateUser,
+  textErr,
+}) {
+  const { handleChange, resetForm, isValid, values, errors } =
+    useFormWithValidation();
 
-  const { handleChange, resetForm, isValid, values, errors } = useFormWithValidation();
-
- 
   useEffect(() => {
-      resetForm();
+    resetForm();
   }, [isOpen]);
-
-  
-  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +42,6 @@ function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }
     >
       <h3 className="modal-window__input-heading">Фамилия</h3>
       <input
-        // onBlur={blurHandler}
         value={values.surname || ""}
         onChange={handleChange}
         required
@@ -53,12 +53,13 @@ function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }
         id="surname"
         placeholder="Введите фамилию"
       />
-      {errors.surname && <span className="modal-window__error">{errors.surname}</span>}
+      {errors.surname && (
+        <span className="modal-window__error">{errors.surname}</span>
+      )}
       <h3 className="modal-window__input-heading">Имя</h3>
       <input
         value={values.name || ""}
         onChange={handleChange}
-        // onBlur={name.onBlur}
         required
         minLength="2"
         maxLength="40"
@@ -68,12 +69,13 @@ function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }
         id="name"
         placeholder="Введите имя"
       />
-      {errors.name && <span className="modal-window__error_name">{errors.name}</span>}
+      {errors.name && (
+        <span className="modal-window__error_name">{errors.name}</span>
+      )}
       <h3 className="modal-window__input-heading">Отчество</h3>
       <input
         value={values.patronymic || ""}
         onChange={handleChange}
-        // onBlur={patronymic.onBlur}
         required
         minLength="2"
         maxLength="40"
@@ -83,12 +85,15 @@ function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }
         id="patronymic"
         placeholder="Введите отчество"
       />
-      {errors.patronymic && <span className="modal-window__error_patronymic">{errors.patronymic}</span>}
+      {errors.patronymic && (
+        <span className="modal-window__error_patronymic">
+          {errors.patronymic}
+        </span>
+      )}
       <h3 className="modal-window__input-heading">E-mail</h3>
       <input
         value={values.email || ""}
         onChange={handleChange}
-        
         required
         minLength="2"
         maxLength="40"
@@ -98,7 +103,9 @@ function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }
         id="email"
         placeholder="Введите электронную почту"
       />
-      {errors.email && <span className="modal-window__error_email">{errors.email}</span>}
+      {errors.email && (
+        <span className="modal-window__error_email">{errors.email}</span>
+      )}
       <h3 className="modal-window__input-heading">Логин</h3>
       <input
         value={values.login || ""}
@@ -112,7 +119,9 @@ function ModalWindowCreateUser({ isOpen, onClose, users, onCreateUser, textErr }
         id="login"
         placeholder="Введите логин"
       />
-      {errors.login && <span className="modal-window__error_login">{errors.login}</span>}
+      {errors.login && (
+        <span className="modal-window__error_login">{errors.login}</span>
+      )}
       {textErr && <span className="modal-window__error_login">{textErr}</span>}
     </ModalWindow>
   );

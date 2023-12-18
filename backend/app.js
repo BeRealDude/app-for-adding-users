@@ -1,15 +1,15 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const cors = require('cors');
+const cors = require("cors");
 
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 
-const { errorCenter } = require('./middlewares/error-center');
+const { errorCenter } = require("./middlewares/error-center");
 
-const routes = require('./routes/users');
+const routes = require("./routes/users");
 
-const { PORT, DB_ADDRESS } = require('./config');
+const { PORT, DB_ADDRESS } = require("./config");
 
 const app = express();
 app.use(express.json());

@@ -9,7 +9,6 @@ const checkResponse = (res) => {
 };
 
 export function addUser(info) {
-  // console.log("api", info);
   return fetch(`${BASE_URL}/users`, {
     method: "POST",
     headers: {
@@ -22,7 +21,6 @@ export function addUser(info) {
       email: info.email,
       login: info.login,
     }),
-    
   }).then((res) => checkResponse(res));
 }
 
@@ -37,8 +35,6 @@ export function getUsers() {
 }
 
 export function updateUser(info) {
-  console.log(info);
-  console.log(info._id);
   return fetch(`${BASE_URL}/users/${info._id}`, {
     method: "PATCH",
     headers: {
@@ -51,18 +47,14 @@ export function updateUser(info) {
       email: info.email,
       login: info.login,
     }),
-    
   }).then((res) => checkResponse(res));
 }
 
 export function deleteUser(info) {
-  console.log(info);
-  console.log(info._id);
   return fetch(`${BASE_URL}/users/${info._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    
   }).then((res) => checkResponse(res));
 }

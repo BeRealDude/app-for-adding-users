@@ -1,37 +1,30 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { useFormWithValidation } from "../../hooks/useForm";
-// import { usersData } from '../Utils/usersData';
 
-function ModalWindowUpdateUser({ isOpen, onClose, textErr, selectedUser, updateUser }) {
+function ModalWindowUpdateUser({
+  isOpen,
+  onClose,
+  selectedUser,
+  updateUser,
+  textErrUpdate,
+}) {
+  const { handleChange, isValid, values, errors, setValues } =
+    useFormWithValidation();
 
-  const { handleChange, resetForm, isValid, values, errors, setValues } = useFormWithValidation();
+  const err =
+    !isValid ||
+    (values.surname === selectedUser.surname &&
+      values.name === selectedUser.name &&
+      values.patronymic === selectedUser.patronymic &&
+      values.email === selectedUser.email &&
+      values.login === selectedUser.login);
 
-
-
-const err =
-!isValid ||
-(values.surname === selectedUser.surname
-&& values.name === selectedUser.name
-&& values.patronymic === selectedUser.patronymic
-&& values.email === selectedUser.email
-&& values.login === selectedUser.login)
-
-
-
-
-   useEffect(() => {
-    if(selectedUser) {
-      setValues(selectedUser)
-    } 
+  useEffect(() => {
+    if (selectedUser) {
+      setValues(selectedUser);
+    }
   }, [isOpen]);
- 
- 
-
-  
-
-  // console.log(selectedUser, 'выбранный юзер')
-  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +34,7 @@ const err =
       patronymic: values.patronymic,
       email: values.email,
       login: values.login,
-      _id: selectedUser._id
+      _id: selectedUser._id,
     });
   }
 
@@ -60,7 +53,7 @@ const err =
     >
       <h3 className="modal-window__input-heading">Фамилия</h3>
       <input
-        value={values?.surname || ''}
+        value={values?.surname || ""}
         onChange={handleChange}
         autoComplete="on"
         required
@@ -72,7 +65,9 @@ const err =
         id="surname"
         placeholder="Введите фамилию"
       />
-      {errors.surname && <span className="modal-window__error">{errors.surname}</span>}
+      {errors.surname && (
+        <span className="modal-window__error">{errors.surname}</span>
+      )}
       <h3 className="modal-window__input-heading">Имя</h3>
       <input
         value={values?.name || ""}
@@ -86,7 +81,9 @@ const err =
         id="name"
         placeholder="Введите имя"
       />
-      {errors.name && <span className="modal-window__error_name">{errors.name}</span>}
+      {errors.name && (
+        <span className="modal-window__error_name">{errors.name}</span>
+      )}
       <h3 className="modal-window__input-heading">Отчество</h3>
       <input
         value={values?.patronymic || ""}
@@ -100,7 +97,11 @@ const err =
         id="patronymic"
         placeholder="Введите отчество"
       />
-      {errors.patronymic && <span className="modal-window__error_patronymic">{errors.patronymic}</span>}
+      {errors.patronymic && (
+        <span className="modal-window__error_patronymic">
+          {errors.patronymic}
+        </span>
+      )}
       <h3 className="modal-window__input-heading">E-mail</h3>
       <input
         value={values?.email || ""}
@@ -114,7 +115,9 @@ const err =
         id="email"
         placeholder="Введите электронную почту"
       />
-      {errors.email && <span className="modal-window__error_email">{errors.email}</span>}
+      {errors.email && (
+        <span className="modal-window__error_email">{errors.email}</span>
+      )}
       <h3 className="modal-window__input-heading">Логин</h3>
       <input
         value={values?.login || ""}
@@ -128,8 +131,12 @@ const err =
         id="login"
         placeholder="Введите логин"
       />
-      {errors.login && <span className="modal-window__error_login">{errors.login}</span>}
-      {textErr && <span className="modal-window__error_login">{textErr}</span>}
+      {errors.login && (
+        <span className="modal-window__error_login">{errors.login}</span>
+      )}
+      {textErrUpdate && (
+        <span className="modal-window__error_login">{textErrUpdate}</span>
+      )}
     </ModalWindow>
   );
 }

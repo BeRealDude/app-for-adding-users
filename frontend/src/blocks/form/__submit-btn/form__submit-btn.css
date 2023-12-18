@@ -14,6 +14,10 @@
     cursor: pointer;
     border: none;
     margin-right: 24px;
+
+    position: absolute;
+    bottom: -48px;
+    right: 0px;
 }
 
 .form__submit-btn:hover{
