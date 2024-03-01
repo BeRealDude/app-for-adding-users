@@ -1,7 +1,7 @@
 {
   "name": "app-for-adding-users",
   "version": "0.1.0",
-  "homepage": "https://berealdude.github.io/app-for-adding-users",
+  "homepage": "https://app-for-adding-users.netlify.app",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
