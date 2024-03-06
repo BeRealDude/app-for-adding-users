@@ -9,7 +9,7 @@ const { errorCenter } = require("./middlewares/error-center");
 
 const routes = require("./routes/users");
 
-const { PORT, DB_ADDRESS } = require("./config");
+const { PORT, DB_ADDRESS, NODE_ENV } = require("./config");
 
 const app = express();
 app.use(express.json());
