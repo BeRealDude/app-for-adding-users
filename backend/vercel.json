@@ -1,6 +1,16 @@
 {
     "version": 2,
-    "builds": [{ "src": "./app.js", "use":
-    "@vercel/node" }],
-    "routes": [{ "src": "/(.*)", "dest": "/" }]
-}
+    "functions": { "api/*.js": { "memory": 512 } },
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/api/$1"
+      }
+    ],
+    "builds": [
+      {
+        "src": "server/app.js",
+        "use": "@vercel/node"
+      }
+    ]
+  }
