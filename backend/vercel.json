@@ -1,11 +1,6 @@
 {
     "version": 2,
-    "functions": {
-      "api": {
-        "source": "app.js",
-        "runtime": "@vercel/node"
-      }
-    },
+    "functions": { "api/*.js": {} },
     "routes": [
       {
         "src": "/api/(.*)",
