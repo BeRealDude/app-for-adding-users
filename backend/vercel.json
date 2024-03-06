@@ -5,5 +5,11 @@
         "src": "/api/(.*)",
         "dest": "/api/$1"
       }
+    ],
+    "builds": [
+      {
+        "src": "server/app.js",
+        "use": "@vercel/node"
+      }
     ]
   }
