@@ -1,0 +1,10 @@
+.list__message {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #353D4B;
+    align-self: center;
+    margin-top: 8%;
+}

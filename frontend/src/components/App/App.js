@@ -19,6 +19,19 @@ function App() {
   const [textErrConfirm, setTextErrConfirm] = useState("");
   const [textErrUpdate, setTextErrUpdate] = useState("");
 
+  const [message, setMessage] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if(users.length === 0) {
+      setMessage(true);
+    } else {
+      setMessage(false);
+    }
+
+  }, [message, users])
+
   useEffect(() => {
     setTimeout(() => {
       setTextErr("");
@@ -87,9 +100,15 @@ function App() {
   }
 
   useEffect(() => {
+    setMessage(false);
+    if(isMWUpdateUser === false && isMWConfirm === false) {
+      setLoading(true);
+    }
+    
     Promise.all([api.getUsers()])
       .then(([info]) => {
         setUsers(info.reverse());
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err, "Ошибка получения пользователей");
@@ -105,6 +124,8 @@ function App() {
         onHandleMWUpdateUserOpen={handleMWUpdateUserOpen}
         selectedUser={selectedUser}
         onHandleMWConfirm={handleMWConfirmOpen}
+        loading={loading}
+        message={message}
       />
       <ModalWindowCreateUser
         isOpen={isModalWindowCreateUserOpen}

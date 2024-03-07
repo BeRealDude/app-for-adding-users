@@ -32,6 +32,11 @@
 @import url(./blocks/modal-window/__container/modal-window__container.css);
 @import url(./blocks/modal-window/modal-window.css);
 @import url(./blocks/modal-window/_opened/modal-window_opened.css);
+
+@import url(./blocks/Preloader/Preloader.css);
+
+@import url(./blocks/list/__message/list__message.css);
+
 @import url(./blocks/list/__btn-wrap/list__btn-wrap.css);
 @import url(./blocks/list/__user-btn-delete/list__user-btn-delete.css);
 @import url(./blocks/list/__user-btn-edit/list__user-btn-edit.css);

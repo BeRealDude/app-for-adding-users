@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import User from "../User/User";
+import Preloader from "../Preloader/Preloader";
 
 function Main({
   onHandleMWCreateUser,
   onHandleMWUpdateUserOpen,
   users,
   onHandleMWConfirm,
+  loading,
+  message
 }) {
+
+  console.log(users)
   return (
     <div className="content-wrap">
       <div className="content-wrap__side-bar"></div>
@@ -29,7 +34,9 @@ function Main({
             <p className="list__user-info">E-mail</p>
             <p className="list__user-info">Логин</p>
           </li>
-          {users !== null &&
+          {loading ?
+          (<Preloader />) : message === true ? <span className="list__message">Нет добавленных пользователей</span> :
+          (users !== null && message === false &&
             users.map((info) => (
               <User
                 key={info._id}
@@ -37,7 +44,8 @@ function Main({
                 onHandleMWUpdateUserOpen={() => onHandleMWUpdateUserOpen(info)}
                 onHandleMWConfirm={() => onHandleMWConfirm(info)}
               />
-            ))}
+            )))
+            }
         </ul>
       </main>
     </div>
