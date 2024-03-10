@@ -1,9 +1,7 @@
 # Проект: App for adding users.
 
 ## Описание
-Приложение позволяет добавлять новых пользователей. Проект написан на "React" (часть frontend) и "Node" (часть backend).
-
-### Адрес репозитория: https://github.com/BeRealDude/app-for-adding-users#readme
+Приложение позволяет управлять списком пользователей. Проект состоит из клиентской части, реализованной на React, и серверной части, основанной на Node.js (Express.js). Для хранения данных используется MongoDB. Для развёртывания использовалась платформа Vercel.
 
 ## Функционал
 * Добавление новых пользователей
@@ -11,8 +9,13 @@
 * Удаление пользователей
 
 ## Стек технологий
-* Express.js
-* Node.js
-* JavaScript
+* React.js
+* Node.js (Express.js)
 * MongoDB
-* React
+* Vercel
+
+### Ссылки на проект:
+* [Репозиторий](https://github.com/BeRealDude/app-for-adding-users)
+* [Frontend](https://app-for-adding-users-client.vercel.app)
+* [Backend](https://app-for-adding-users.vercel.app)
+
