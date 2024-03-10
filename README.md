@@ -16,6 +16,6 @@
 
 ### Ссылки на проект:
 * [Репозиторий](https://github.com/BeRealDude/app-for-adding-users)
-* [Backend](https://app-for-adding-users-client.vercel.app)
+* [Frontend](https://app-for-adding-users-client.vercel.app)
 * [Backend](https://app-for-adding-users.vercel.app)
 
